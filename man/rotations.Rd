@@ -98,7 +98,7 @@
 
 \value{A list as needed by \code{factanal} with elements
    \item{loadings}{Lh from \code{GPForth} or \code{GPFoblq}.} 
-   \item{rotmat}{Th from \code{GPForth} or \code{GPFoblq}.}  
+   \item{Th}{Th from \code{GPForth} or \code{GPFoblq}.}  
    \item{Table}{Table from \code{GPForth} or \code{GPFoblq}.}
    \item{logical}{Convergence indicator from \code{GPForth} or \code{GPFoblq}.}
    }
@@ -171,16 +171,20 @@
   qHarman2 <- quartimax(Harman8) 
 
   data("WansbeekMeijer", package="GPArotation")
-  unrotated  <- factanal(factors = 2, covmat=NetherlandsTV, rotation="none")
-  unrotated
-  GPForth(loadings(unrotated), Tmat=diag(2), method="varimax")$Lh
-  factanal(factors = 2, covmat=NetherlandsTV, rotation="Varimax")
-  factanal(factors = 2, covmat=NetherlandsTV, rotation="varimax")
-  GPFoblq(loadings(unrotated), Tmat=diag(2), method="oblimin")$Lh
+  fa.unrotated  <- factanal(factors = 2, covmat=NetherlandsTV, rotation="none")
+
+  fa.varimax <- factanal(factors = 2, covmat=NetherlandsTV, 
+                rotation="varimax", control=list(rotate=list(normalize=TRUE)))
+  fa.oblimin <- factanal(factors = 2, covmat=NetherlandsTV,
+                rotation="oblimin", control=list(rotate=list(normalize=TRUE)))
+  
+  cbind(loadings(fa.unrotated), loadings(fa.varimax), loadings(fa.oblimin))
+
   }
 \seealso{
    \code{\link{GPForth}}
    \code{\link{GPFoblq}}
+   \code{\link{WansbeekMeijer}}
    \code{\link[stats]{factanal}}
    \code{\link[stats]{varimax}}
    \code{\link[stats]{promax}}

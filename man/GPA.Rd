@@ -4,8 +4,8 @@
 
 \title{Rotation optimization}
 \usage{
-    GPForth(A, Tmat=diag(ncol(A)), method="varimax", normalize=FALSE, eps=1e-8, maxit=1000, ...)
-    GPFoblq(A, Tmat=diag(ncol(A)), method="quartimin", normalize=FALSE, eps=1e-8, maxit=1000, ...)
+    GPForth(A, Tmat=diag(ncol(A)), method="varimax", normalize=FALSE, eps=1e-5, maxit=1000, ...)
+    GPFoblq(A, Tmat=diag(ncol(A)), method="quartimin", normalize=FALSE, eps=1e-5, maxit=1000, ...)
     }
 \arguments{
     \item{A}{initial factor loadings matrix for which the rotation 
@@ -25,12 +25,13 @@
    }
 \value{A list with elements 
   \item{Lh}{The rotated loadings, one column for each factor.}
-  \item{Th}{The rotation matrix.}
+  \item{Th}{The rotation matrix,  Lh \%*\% t(Th) = A.}
   \item{Table}{A matrix recording the iterations of the rotation optimization.}
   \item{method}{A string indicating the rotation objective function.}
   \item{orthogonal}{A logical indicating if the rotation is orthogonal.}
   \item{convergence}{A logical indicating if convergence was obtained.}
-  \item{Phi}{t(Th) \%*\% Th.  This will be the identity matrix for orthogonal
+  \item{Phi}{t(Th) \%*\% Th.  The covariance matrix of the rotated factors.
+  This will be the identity matrix for orthogonal
   rotations so is omitted from the result of GPForth.}
   }
 \details{
@@ -43,10 +44,15 @@
 
  GPForth is the main GP algorithm for orthogonal rotation.
  GPFoblq is the main GP algorithm for oblique rotation.
- Both algorithms require a loadings matrix \code{A} and optionally 
- an initial rotation matrix \code{Tmat} indicating any rotation that has already
- been performed. (These together fix the equivalence class over which the optimization
- is done.) By default the initial rotation is the identity matrix.
+ Both algorithms require a loadings matrix \code{A} which fixes the 
+ equivalence class over which the optimization is done. It must be 
+ the solution to the orthogonal factor analysis problem. 
+ \code{A \%*\% t(solve(Tmat))} indicates the starting point for 
+ iterative optimization. By default the initial rotation is the 
+ identity matrix. For some rotation criteria local optima may exist
+ and it is recommended to check for this by starting with many different
+ initial rotations. The function \code{\link{Random.Start}} will help to do
+ this.
  
  The argument \code{method} can be used to specify a string indicating
  the rotation objective. \code{GPFoblq} defaults to \code{"quartimin"} 
@@ -77,11 +83,8 @@
  If \code{normalize} is a vector of length equal to the number of indicators (=
  number of rows of \code{A}) then the colums are divided by \code{normalize} 
  before rotation and multiplied by \code{normalize} after rotation. 
- If \code{normalize} is a matrix of the same dimension as \code{A} then \code{A}
- is divided by \code{normalize} before rotation and multiplied 
- by \code{normalize} after rotation. 
  If \code{normalize} is a function then it should take \code{A} as an argument
- and return a matrix which is used like the matrix above. 
+ and return a vector which is used like the vector above. 
 }
 \seealso{
    \code{\link{Random.Start}}
@@ -114,6 +117,14 @@
 \examples{
   data("Harman", package="GPArotation")
   qHarman  <- GPForth(Harman8, Tmat=diag(2), method="quartimax")
+
+  data("WansbeekMeijer", package="GPArotation")
+  fa.unrotated  <- factanal(factors = 2, covmat=NetherlandsTV, 
+              normalize=TRUE, rotation="none")
+
+  GPForth(loadings(fa.unrotated), method="varimax", normalize=TRUE, eps=1e-5)$Lh
+
+  GPFoblq(loadings(fa.unrotated), method="oblimin", normalize=TRUE, eps=1e-5)$Lh
   }
 \author{Coen A. Bernaards and Robert I. Jennrich
         with some R modifications by Paul Gilbert}
