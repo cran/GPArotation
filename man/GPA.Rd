@@ -4,8 +4,10 @@
 
 \title{Rotation optimization}
 \usage{
-    GPForth(A, Tmat=diag(ncol(A)), method="varimax", normalize=FALSE, eps=1e-5, maxit=1000, ...)
-    GPFoblq(A, Tmat=diag(ncol(A)), method="quartimin", normalize=FALSE, eps=1e-5, maxit=1000, ...)
+    GPForth(A, Tmat=diag(ncol(A)), normalize=FALSE, eps=1e-5, maxit=1000, 
+       method="varimax", methodArgs=NULL)
+    GPFoblq(A, Tmat=diag(ncol(A)), normalize=FALSE, eps=1e-5, maxit=1000, 
+       method="quartimin", methodArgs=NULL)
     }
 \arguments{
     \item{A}{initial factor loadings matrix for which the rotation 
@@ -16,14 +18,14 @@
     \item{eps}{convergence is assumed when the norm of the gradient is smaller
          than eps.}
     \item{maxit}{maximum number of iterations allowed in the main loop.}
-    \item{...}{additional arguments passed to the rotation objective}
+    \item{methodArgs}{a list ofmethodArgs arguments passed to the rotation objective}
 }
 
 \description{
    Gradient projection rotation optimization routine used by various rotation
    objective.
    }
-\value{A list with elements 
+\value{A GPArotation object which is a list with elements 
   \item{Lh}{The rotated loadings, one column for each factor.}
   \item{Th}{The rotation matrix,  Lh \%*\% t(Th) = A.}
   \item{Table}{A matrix recording the iterations of the rotation optimization.}
@@ -47,8 +49,11 @@
  Both algorithms require a loadings matrix \code{A} which fixes the 
  equivalence class over which the optimization is done. It must be 
  the solution to the orthogonal factor analysis problem. 
- \code{A \%*\% t(solve(Tmat))} indicates the starting point for 
- iterative optimization. By default the initial rotation is the 
+ A rotation is defined as code{A \%*\% t(solve(Tmat))}. For the 
+ orthogonal case \code{Tmat} is orthonormal so this simplifies 
+ to code{A \%*\% Tmat}. The starting point for 
+ iterative optimization is given by the \code{Tmat} rotation of \code{A}. 
+ By default the initial rotation is the 
  identity matrix. For some rotation criteria local optima may exist
  and it is recommended to check for this by starting with many different
  initial rotations. The function \code{\link{Random.Start}} will help to do
@@ -112,7 +117,7 @@
    \code{\link{infomaxT}}
    \code{\link{infomaxQ}}
    \code{\link{mccammon}}
-   \code{\link[stats]{promax}}
+   \code{\link{promax}}
 }
 \examples{
   data("Harman", package="GPArotation")
@@ -122,9 +127,13 @@
   fa.unrotated  <- factanal(factors = 2, covmat=NetherlandsTV, 
               normalize=TRUE, rotation="none")
 
-  GPForth(loadings(fa.unrotated), method="varimax", normalize=TRUE, eps=1e-5)$Lh
+  GPForth(loadings(fa.unrotated), method="varimax", normalize=TRUE)$Lh
 
-  GPFoblq(loadings(fa.unrotated), method="oblimin", normalize=TRUE, eps=1e-5)$Lh
+  TV <- GPFoblq(loadings(fa.unrotated), method="oblimin", normalize=TRUE)
+
+  print(TV)
+  print(TV, Table=TRUE)
+  summary(TV)
   }
 \author{Coen A. Bernaards and Robert I. Jennrich
         with some R modifications by Paul Gilbert}
@@ -134,7 +143,7 @@
 \reference{
    source{\url{http://www.stat.ucla.edu/research} or
           \url{http://www.stat.ucla.edu/research/gpa}
-   }
+         }
    The software reference is
 
    Bernaards, C.A. and Jennrich, R.I. (in press) Gradient Projection 
@@ -151,4 +160,3 @@
    }
 \concept{rotation}
 \keyword{multivariate}
-
