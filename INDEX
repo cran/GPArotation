@@ -1,4 +1,5 @@
-GPForth                 Rotation optimization
+00.GPArotation.Intro    GPA Rotation for Factor Analysis
+GPForth                 Rotation Optimization
 Harman                  Example Data from Harman
 Random.Start            Generate a Random Orthogonal Rotation
 Thurstone               Example Data from Thurstone
