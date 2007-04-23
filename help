@@ -1,0 +1,13 @@
+ >>> Building/Updating help pages for package 'GPArotation'
+     Formats: text html latex example 
+  00.GPArotation.Intro              text    html    latex
+  GPA                               text    html    latex   example
+  GPArotation-package               text    html    latex
+  Harman                            text    html    latex
+  NormalizingWeight                 text    html    latex
+  Random.Start                      text    html    latex   example
+  Thurstone                         text    html    latex
+  WansbeekMeijer                    text    html    latex
+  eiv                               text    html    latex   example
+  print.GPArotation                 text    html    latex
+  rotations                         text    html    latex   example

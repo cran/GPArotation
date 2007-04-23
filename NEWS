@@ -1,12 +1,28 @@
-             There are no known bugs in this package!
-                       (It's hard to believe.)
-
                  Known problems 
 
   o Very occassionally (about 1 in 1000 in monte carlo experiments) the
      algorithm gets stuck and does not improve (so does not converge). The
      workaround is to restart with a very slightly perturbed starting point.       
 
+
+            Changes in GPArotation version 2007.04-1
+
+  o removed an extra comma in c() that caused a test failure with R-2.5.0
+
+  o added eiv rotation.
+    
+  o renamed $Lh in the result from GPForth and GPFoblq to $loadings. As a
+    result, rotation methods calling these function no longer need to rename
+    this element in order to work with factanal and other programs. (It is a
+    good idea to use the extractor function loadings() rather than refer
+    directly to object structure.)
+
+  o changed rotation method functions to return all elements of GPFoblq and
+    GFForth.
+
+  o fixed the documentation file primary alias for all rotations (which was 
+     being called oblimin).
+      
 
             Changes in GPArotation version 2006.2-2
 

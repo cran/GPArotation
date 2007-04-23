@@ -20,11 +20,11 @@ data("Harman", package="GPArotation")
 qHarman  <- GPForth(Harman8, Tmat=diag(2), method="quartimax")
 qHarman2 <- quartimax(Harman8) 
 
- if( fuzz < max(abs(qHarman$Lh - qHarman2$loadings))) {
+ if( fuzz < max(abs(qHarman$loadings - qHarman2$loadings))) {
     cat("Calculated value is not the same as test value in test Harman 1. Value:\n")
-    print(qHarman$Lh, digits=18)
+    print(qHarman$loadings, digits=18)
     cat("difference:\n")
-    print(qHarman$Lh - qHarman2$loadings, digits=18)
+    print(qHarman$loadings - qHarman2$loadings, digits=18)
     all.ok <- FALSE  
     } 
 
@@ -54,11 +54,11 @@ qHarman2 <- quartimax(Harman8)
   0.307860074444663512, 0.659333128670876345
    ), 2, 8))
 
- if( fuzz < max(abs(qHarman$Lh - tst ))) {
+ if( fuzz < max(abs(qHarman$loadings - tst ))) {
     cat("Calculated value is not the same as test value in test Harman 2. Value:\n")
-    print(qHarman$Lh, digits=18)
+    print(qHarman$loadings, digits=18)
     cat("difference:\n")
-    print(qHarman$Lh - tst, digits=18)
+    print(qHarman$loadings - tst, digits=18)
     all.ok <- FALSE  
     } 
 
@@ -91,11 +91,11 @@ qHarman2 <- quartimax(Harman8)
 qminHarman  <- GPFoblq(Harman8, Tmat=diag(2), method="quartimin")
 qminHarman2 <- quartimin(Harman8) 
 
- if( fuzz < max(abs(qminHarman$Lh - qminHarman2$loadings))) {
+ if( fuzz < max(abs(qminHarman$loadings - qminHarman2$loadings))) {
     cat("Calculated value is not the same as test value in test Harman 4. Value:\n")
-    print(qminHarman$Lh, digits=18)
+    print(qminHarman$loadings, digits=18)
     cat("difference:\n")
-    print(qminHarman$Lh - qminHarman2$loadings, digits=18)
+    print(qminHarman$loadings - qminHarman2$loadings, digits=18)
     all.ok <- FALSE  
     } 
 
@@ -121,14 +121,14 @@ qminHarman2 <- quartimin(Harman8)
    0.0137008854716444972,  0.9250004106413580729,
   -0.0172649861805529957,  0.8212526839806429946,
   -0.0524452035885302342,  0.7649528396536503516,
-   0.0858895830186393733,  0.6831153711863455769,
+   0.0858895830186393733,  0.6831153711863455769
    ),2, 8))				       
 					       
- if( fuzz < max(abs(qminHarman$Lh - tst ))) {
+ if( fuzz < max(abs(qminHarman$loadings - tst ))) {
     cat("Calculated value is not the same as test value in test Harman 5. Value:\n")
-    print(qminHarman$Lh, digits=18)
+    print(qminHarman$loadings, digits=18)
     cat("difference:\n")
-    print(qminHarman$Lh - tst, digits=18)
+    print(qminHarman$loadings - tst, digits=18)
     all.ok <- FALSE  
     } 
 
@@ -163,7 +163,7 @@ qminHarman2 <- quartimin(Harman8)
 # with eps=1e-5
  tst <- t(matrix(c(
    0.878125280760480686, 0.836722770276292271,
-  -0.478430759137962514, 0.547626702874473570,
+  -0.478430759137962514, 0.547626702874473570
    ),2, 2))				       
 					       
  if( fuzz < max(abs(qminHarman$Th - tst ))) {

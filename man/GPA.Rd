@@ -26,7 +26,7 @@
    objective.
    }
 \value{A GPArotation object which is a list with elements 
-  \item{Lh}{The rotated loadings, one column for each factor.}
+  \item{loadings}{The rotated loadings, one column for each factor.}
   \item{Th}{The rotation matrix,  Lh \%*\% t(Th) = A.}
   \item{Table}{A matrix recording the iterations of the rotation optimization.}
   \item{method}{A string indicating the rotation objective function.}
@@ -34,7 +34,7 @@
   \item{convergence}{A logical indicating if convergence was obtained.}
   \item{Phi}{t(Th) \%*\% Th.  The covariance matrix of the rotated factors.
   This will be the identity matrix for orthogonal
-  rotations so is omitted from the result of GPForth.}
+  rotations so is omitted (NULL) for the result from GPForth.}
   }
 \details{
  Gradient projection rotation optimization routines developed by
@@ -49,9 +49,9 @@
  Both algorithms require a loadings matrix \code{A} which fixes the 
  equivalence class over which the optimization is done. It must be 
  the solution to the orthogonal factor analysis problem. 
- A rotation is defined as code{A \%*\% t(solve(Tmat))}. For the 
+ A rotation is defined as \code{A \%*\% t(solve(Tmat))}. For the 
  orthogonal case \code{Tmat} is orthonormal so this simplifies 
- to code{A \%*\% Tmat}. The starting point for 
+ to \code{A \%*\% Tmat}. The starting point for 
  iterative optimization is given by the \code{Tmat} rotation of \code{A}. 
  By default the initial rotation is the 
  identity matrix. For some rotation criteria local optima may exist
@@ -87,7 +87,8 @@ The string is prefixed with
  normalization should be done before rotation, and then undone after rotation.
  If \code{normalize} is \code{FALSE} (the default) no normalization is done.
  If \code{normalize} is \code{TRUE} then Kaiser normalization is done. (So
- squared row entries of normalized \code{A} sum to 1.0.)
+ squared row entries of normalized \code{A} sum to 1.0. This is sometimes called
+ Horst normalization.)
  If \code{normalize} is a vector of length equal to the number of indicators (=
  number of rows of \code{A}) then the colums are divided by \code{normalize} 
  before rotation and multiplied by \code{normalize} after rotation. 
@@ -130,7 +131,7 @@ The string is prefixed with
   fa.unrotated  <- factanal(factors = 2, covmat=NetherlandsTV, 
               normalize=TRUE, rotation="none")
 
-  GPForth(loadings(fa.unrotated), method="varimax", normalize=TRUE)$Lh
+  GPForth(loadings(fa.unrotated), method="varimax", normalize=TRUE)$loadings
 
   TV <- GPFoblq(loadings(fa.unrotated), method="oblimin", normalize=TRUE)
 
