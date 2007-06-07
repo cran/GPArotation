@@ -1,9 +1,9 @@
 00.GPArotation.Intro    GPA Rotation for Factor Analysis
+eiv                     Errors-in-Variables Rotation
 GPArotation-package     GPA Rotation for Factor Analysis
 GPForth                 Rotation Optimization
 Harman                  Example Data from Harman
 Random.Start            Generate a Random Orthogonal Rotation
+rotations               Rotations
 Thurstone               Example Data from Thurstone
 WansbeekMeijer          Factor Example from Wansbeek and Meijer
-eiv                     Errors-in-Variables Rotation
-rotations               Rotations
