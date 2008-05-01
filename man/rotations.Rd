@@ -46,8 +46,8 @@
     quartimin(L, Tmat=diag(ncol(L)), normalize=FALSE, eps=1e-5, maxit=1000)
     targetT(L, Tmat=diag(ncol(L)), Target=NULL, normalize=FALSE, eps=1e-5, maxit=1000)
     targetQ(L, Tmat=diag(ncol(L)), Target=NULL, normalize=FALSE, eps=1e-5, maxit=1000)
-    pstT(L, Tmat=diag(ncol(L)), W, Target=NULL, normalize=FALSE, eps=1e-5, maxit=1000)
-    pstQ(L, Tmat=diag(ncol(L)), W, Target=NULL, normalize=FALSE, eps=1e-5, maxit=1000)
+    pstT(L, Tmat=diag(ncol(L)), W=NULL, Target=NULL, normalize=FALSE, eps=1e-5, maxit=1000)
+    pstQ(L, Tmat=diag(ncol(L)), W=NULL, Target=NULL, normalize=FALSE, eps=1e-5, maxit=1000)
     oblimax(L, Tmat=diag(ncol(L)), normalize=FALSE, eps=1e-5, maxit=1000)
     entropy(L, Tmat=diag(ncol(L)), normalize=FALSE, eps=1e-5, maxit=1000)
     quartimax(L, Tmat=diag(ncol(L)), normalize=FALSE, eps=1e-5, maxit=1000)
@@ -68,7 +68,7 @@
     vgQ.oblimin(L, gam=0)
     vgQ.quartimin(L)
     vgQ.target(L, Target=NULL)
-    vgQ.pst(L, W, Target=NULL)
+    vgQ.pst(L, W=NULL, Target=NULL)
     vgQ.oblimax(L)
     vgQ.entropy(L)
     vgQ.quartimax(L)
@@ -153,6 +153,8 @@
  infomaxQ  \tab oblique	   \tab         			   \cr
  mccammon  \tab orthogonal \tab  McCammon minimum entropy ratio    \cr
 }
+ Also included for convenience are two analytic rotations \code{eiv} 
+ and \code{echelon} which do not require \code{GPForth} or \code{GPFoblq}.
 
  Note that \code{Varimax} defined here uses \code{vgQ.varimax} and 
  is not \code{varimax}
@@ -197,6 +199,7 @@
    \code{\link{GPFoblq}}, 
    \code{\link{WansbeekMeijer}}, 
    \code{\link{eiv}}, 
+   \code{\link{echelon}}, 
    \code{\link[stats]{factanal}}, 
    \code{\link[stats]{varimax}}, 
    \code{\link[stats:varimax]{promax}}

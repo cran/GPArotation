@@ -35,6 +35,7 @@
   \item{Phi}{t(Th) \%*\% Th.  The covariance matrix of the rotated factors.
   This will be the identity matrix for orthogonal
   rotations so is omitted (NULL) for the result from GPForth.}
+  \item{Gq}{The gradient of the objective function at the rotated loadings.}
   }
 \details{
  Gradient projection rotation optimization routines developed by
@@ -141,7 +142,6 @@ The string is prefixed with
   }
 \author{Coen A. Bernaards and Robert I. Jennrich
         with some R modifications by Paul Gilbert}
-}
 \references{
    Additional information is available at 
    \url{http://www.stat.ucla.edu/research} or
