@@ -22,6 +22,8 @@
 \alias{infomaxT}
 \alias{infomaxQ}
 \alias{mccammon}
+\alias{bifactorT}
+\alias{bifactorQ}
 
 \alias{vgQ.oblimin}
 \alias{vgQ.quartimin}
@@ -39,6 +41,7 @@
 \alias{vgQ.cf}
 \alias{vgQ.infomax}
 \alias{vgQ.mccammon}
+\alias{vgQ.bifactor}
 
 \title{Rotations}
 \usage{
@@ -64,7 +67,9 @@
     infomaxT(L, Tmat=diag(ncol(L)), normalize=FALSE, eps=1e-5, maxit=1000)
     infomaxQ(L, Tmat=diag(ncol(L)), normalize=FALSE, eps=1e-5, maxit=1000)
     mccammon(L, Tmat=diag(ncol(L)), normalize=FALSE, eps=1e-5, maxit=1000)
-
+    bifactorT(L, Tmat=diag(ncol(L)), normalize=FALSE, eps=1e-5, maxit=1000)
+    bifactorQ(L, Tmat=diag(ncol(L)), normalize=FALSE, eps=1e-5, maxit=1000)
+    
     vgQ.oblimin(L, gam=0)
     vgQ.quartimin(L)
     vgQ.target(L, Target=NULL)
@@ -81,6 +86,7 @@
     vgQ.cf(L, kappa=0)
     vgQ.infomax(L)
     vgQ.mccammon(L)
+    vgQ.bifactor(L)
 }
 \arguments{
     \item{L}{a factor loading matrix}
@@ -152,7 +158,10 @@
  infomaxT  \tab orthogonal \tab 				   \cr
  infomaxQ  \tab oblique	   \tab         			   \cr
  mccammon  \tab orthogonal \tab  McCammon minimum entropy ratio    \cr
-}
+ bifactorT \tab orthogonal \tab  Jennrich and Bentler bifactor rotation\cr
+ bifactorQ \tab oblique    \tab  Jennrich and Bentler biquartimin rotation\cr
+ }
+
  Also included for convenience are two analytic rotations \code{eiv} 
  and \code{echelon} which do not require \code{GPForth} or \code{GPFoblq}.
 
@@ -208,6 +217,10 @@
   Bernaards, C.A. and Jennrich, R.I. (2005) Gradient Projection Algorithms 
      and Software for Arbitrary Rotation Criteria in Factor Analysis. 
      \emph{Educational and Psychological Measurement}, \bold{65}, 676--696.
+
+   Bifactor rotation, bifactorT and bifactorQ are called bifactor and
+      biquartimin in Jennrich, R.I. and Bentler, P.M. 
+      (2011) Exploratory bi-factor analysis. \emph{Psychometrika}, \bold{76}. 
 
    A discussion of rotation objectives can be found in many references,
    for example, 

@@ -238,10 +238,13 @@ targetQ <- function(L, Tmat=diag(ncol(L)), Target=NULL, normalize=FALSE, eps=1e-
 
 vgQ.target <- function(L, Target=NULL){
    if(is.null(Target)) stop("argument Target must be specified.")
-   #   e.g.  Target <- matrix(c(rep(9,4),rep(0,8),rep(9,4)),8) 
-   list(Gq=2*(L-Target),
-        f=sum((L-Target)^2), 
-	Method="Target rotation")
+   #   e.g.  Target <- matrix(c(rep(NA,4),rep(0,8),rep(NA,4)),8) 
+   #  approximates  Michael Brown approach
+   Gq <-  2 * (L - Target)
+   Gq[is.na(Gq)] <- 0 #missing elements in target do not affect the first derivative 
+   list(Gq=Gq,
+        f=sum((L-Target)^2, na.rm=TRUE),  
+	Method="Target rotation")  #The target rotation ? option in Michael Browne's algorithm should be NA
    }
 
 pstT <- function(L, Tmat=diag(ncol(L)), W=NULL, Target=NULL, normalize=FALSE, eps=1e-5, maxit=1000) {
@@ -502,6 +505,39 @@ vgQ.mccammon <- function(L){
   Gq <- 2*L*(G1/Q1 - G2/Q2)
   Q <- log(Q1) - log(Q2)
   list(Gq=Gq, f=Q, Method=Method)
+}
+
+
+bifactorT <- function(L, Tmat=diag(ncol(L)), normalize=FALSE, 
+     eps=1e-5, maxit=1000){
+  #adapted from Jennrich and Bentler 2011. code provided by William Revelle	
+    GPForth(L, Tmat=Tmat, normalize=normalize, eps=eps, maxit=maxit,
+            method="bifactor")
+    }
+
+bifactorQ <- function(L, Tmat=diag(ncol(L)), normalize=FALSE, 
+     eps=1e-5, maxit=1000){
+  #the oblique case
+  #adapted from Jennrich and Bentler 2011. code provided by William Revelle	
+    GPFoblq(L, Tmat=Tmat, normalize=normalize, eps=eps, maxit=maxit,
+            method="bifactor")
+    }
+
+
+vgQ.bifactor <- function(L) {
+  # code provided by William Revelle	
+  D <- function(L) {
+    L2 <- L^2
+    L2N <- L2 %*% ! diag(NCOL(L))
+    list(f=sum(L2 * L2N),
+         Gq=4 * L * L2N)
+  }
+  lvg <- D(L[,-1, drop=FALSE])
+  G <- lvg$Gq
+  G <-cbind(G[,1],G)
+  G[,1] <- 0
+  list(f=lvg$f,
+       Gq=G)
 }
 
 
