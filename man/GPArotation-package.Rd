@@ -14,8 +14,7 @@ rotation objective functions for factor analysis.
 Package: \tab GPArotation\cr
 Depends: \tab R (>= 2.0.0)\cr
 License: \tab GPL Version 2.\cr
-URL: \tab http://www.stat.ucla.edu/research or\cr
-     \tab http://www.stat.ucla.edu/research/gpa\cr}
+URL: \tab https://optimizer.r-forge.r-project.org/GPArotation_www/\cr}
 
 The main optimization functions are
 \code{\link{GPForth}} and \code{\link{GPFoblq}}. Rotation objectives include
@@ -26,7 +25,7 @@ The main optimization functions are
         with some R modifications by Paul Gilbert.
 
 Code is modified from original source \file{splusfunctions.net} available at 
-  \url{http://www.stat.ucla.edu/research/gpa}.
+  \url{https://optimizer.r-forge.r-project.org/GPArotation_www/}.
 
 }
 \references{

@@ -144,8 +144,7 @@ The string is prefixed with
         with some R modifications by Paul Gilbert}
 \references{
    Additional information is available at 
-   \url{http://www.stat.ucla.edu/research} or
-          \url{http://www.stat.ucla.edu/research/gpa}
+   \url{https://optimizer.r-forge.r-project.org/GPArotation_www/}
    The software reference is
 
    Bernaards, C.A. and Jennrich, R.I. (2005) Gradient Projection Algorithms 
