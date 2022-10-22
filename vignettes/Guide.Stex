@@ -1,4 +1,5 @@
 \documentclass[english]{article}
+\usepackage{hyperref}
 \begin{document}
 
 %\VignetteIndexEntry{gpa Guide}
@@ -14,10 +15,12 @@ library("GPArotation")
 \end{Scode}
 
 The most complete reference for the software is:
-Bernaards, C.A. and Jennrich, R.I. (in press) Gradient Projection Algorithms 
+Bernaards, C.A. and Jennrich, R.I. (2005) Gradient Projection Algorithms 
 and Software for Arbitrary Rotation Criteria in Factor Analysis. Educational 
-and Psychological Measurement. Addition material is also available at 
-<http://www.stat.ucla.edu/research/gpa>.
+and Psychological Measurement. A mirror of the original repository that is referenced 
+in the paper, with additional material is available 
+\href{https://optimizer.r-forge.r-project.org/GPArotation\_www/indexOriginal.html}
+{at this link}.
 
 Rotations are computed using the Gradient Projection Algorithm code, which can
 be called directly. Examples of this are available in the help pages for 

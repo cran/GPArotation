@@ -100,7 +100,7 @@
     \item{Target}{rotation target for objective calculation.}
     \item{W}{weighting of each element in target.}
     \item{k}{number of close to zero loadings.}
-    \item{delta}{constant added to L\^2 in objective calculation.}
+    \item{delta}{constant added to Lambda^2 in objective calculation.}
     \item{kappa}{see details.}
     \item{normalize}{parameter passed to optimization routine (GPForth or GPFoblq).}
     \item{eps}{parameter passed to optimization routine (GPForth or GPFoblq).}

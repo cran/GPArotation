@@ -15,6 +15,5 @@ citEntry(entry="article",
        "Gradient Projection Algorithms and Software for Arbitrary",
               "Rotation Criteria in Factor Analysis, ",
           "Educational and Psychological Measurement: 65, 676-696. ",
-               "<http://www.stat.ucla.edu/research/gpa>",
                sep="")
   )
