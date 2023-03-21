@@ -3,6 +3,9 @@ importFrom("stats", "rnorm")
 export(
    "GPFoblq",
    "GPForth")
+export(
+   "GPFRSoblq",
+   "GPFRSorth")
 
 export("Random.Start")
 
@@ -30,6 +33,9 @@ export("infomaxQ")
 export("mccammon")
 export("bifactorT")
 export("bifactorQ")
+export("equamax")
+export("parsimax")
+export("varimin")
 
 export(
     "eiv",

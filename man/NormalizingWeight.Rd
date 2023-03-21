@@ -11,9 +11,9 @@
 }
 
 \description{
-   See GPFobliq and GPForth.
+   See GPFRSoblq and GPFRSorth.
    }
-\value{A matrix.}
+\value{A matrix. This function is not exported in the NAMESPACE, and is only used by the GP rotation functions. See \link{GPFRSorth} for an example of its use.}
 
 \keyword{internal}
 

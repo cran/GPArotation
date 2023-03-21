@@ -1,19 +1,10 @@
-citHeader("To cite package 'GPArotation' in publications use:")
-
-citEntry(entry="article",
-  author  = personList(as.person("Coen A. Bernaards"),
-                       as.person("Robert I.Jennrich")),
-  year    = 2005,
-  title   = "Gradient Projection Algorithms and Software for Arbitrary
-             Rotation Criteria in Factor Analysis",
-  journal = "Educational and Psychological Measurement",
-  volume  = "65",
-  pages =     "676--696", 
-  
-  textVersion = 
-     paste("Bernaards, Coen A. and Jennrich, Robert I. (2005) ", 
-       "Gradient Projection Algorithms and Software for Arbitrary",
-              "Rotation Criteria in Factor Analysis, ",
-          "Educational and Psychological Measurement: 65, 676-696. ",
-               sep="")
-  )
+ bibentry(bibtype="article",
+    title = "Gradient Projection Algorithms and Software for Arbitrary Rotation Criteria in Factor Analysis",
+    author = "Coen A. Bernaards and Robert I. Jennrich",
+    journal = "Educational and Psychological Measurement",
+    year = "2005",
+    volume = "65",
+    issue = "5",
+    pages = "676--696",
+    doi = "10.1177/0013164404272507"
+)

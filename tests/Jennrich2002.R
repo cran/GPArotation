@@ -67,6 +67,8 @@ Target <- t(matrix(c(
  3, 20, dimnames = list(c("T1", "T2", "T3"), NULL)))
 
 v <- targetQ(box20,Target=Target)$loadings
+# THIS ONE WORKS
+#v <- GPFoblq(box20, method ="target", methodArgs = list(Target=Target))$loadings
 
 all.ok <- TRUE  
 
