@@ -35,13 +35,13 @@
     quartimin(A, Tmat=diag(ncol(A)), normalize=FALSE, eps=1e-5, 
     		maxit=1000, randomStarts=0)
     targetT(A, Tmat=diag(ncol(A)), Target=NULL, normalize=FALSE, eps=1e-5, 
-    		maxit=1000, randomStarts=0)
+    		maxit=1000, randomStarts=0, L=NULL)
     targetQ(A, Tmat=diag(ncol(A)), Target=NULL, normalize=FALSE, eps=1e-5, 
-    		maxit=1000, randomStarts=0)
+    		maxit=1000, randomStarts=0, L=NULL)
     pstT(A, Tmat=diag(ncol(A)), W=NULL, Target=NULL, normalize=FALSE, eps=1e-5, 
-    		maxit=1000, randomStarts=0)
+    		maxit=1000, randomStarts=0, L=NULL)
     pstQ(A, Tmat=diag(ncol(A)), W=NULL, Target=NULL, normalize=FALSE, eps=1e-5, 
-    		maxit=1000, randomStarts=0)
+    		maxit=1000, randomStarts=0, L=NULL)
     oblimax(A, Tmat=diag(ncol(A)), normalize=FALSE, eps=1e-5, maxit=1000, randomStarts=0)
     entropy(A, Tmat=diag(ncol(A)), normalize=FALSE, eps=1e-5, maxit=1000, randomStarts=0)
     quartimax(A, Tmat=diag(ncol(A)), normalize=FALSE, eps=1e-5,maxit=1000,randomStarts=0)
@@ -84,6 +84,7 @@
     \item{eps}{parameter passed to optimization routine (GPForth or GPFoblq).}
     \item{maxit}{parameter passed to optimization routine (GPForth or GPFoblq).}
     \item{randomStarts}{parameter passed to optimization routine (GPFRSorth or GPFRSoblq).}
+    \item{L}{provided for backward compatibility in target rotations only. Use A going forward.}
 }
 
 \value{A list (which includes elements used by \code{factanal}) with:

@@ -14,7 +14,7 @@
     \item{object}{a summary.GPArotation to print.}
     \item{digits}{precision of printed numbers.}
     \item{sortLoadings}{display sorted loadings of a GPArotation object.}
-    \item{RotateMat}{display the rotation matrix of a GPArotation object.}
+    \item{rotateMat}{display the rotation matrix of a GPArotation object.}
     \item{Table}{display the convergence table of a GPArotation object.}
     \item{Structure}{display the structure matrix of a summary.GPArotation object of a oblique rotation.}
     \item{...}{further arguments passed to other methods.}

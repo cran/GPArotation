@@ -1,7 +1,6 @@
 \name{00.GPArotation}
 \alias{GPArotation}
 \alias{GPArotation-package}
-\alias{00.GPArotation-package}
 \alias{GPArotation.Intro}
 \docType{package}
 \title{Gradient Projection Algorithms for Factor Rotation}

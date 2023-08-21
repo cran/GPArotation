@@ -80,13 +80,23 @@ vgQ.quartimin <- function(L){
 ###########################################
 
 
-targetT <- function(A, Tmat=diag(ncol(A)), Target=NULL, normalize=FALSE, eps=1e-5, maxit=1000, randomStarts = 0) {
+targetT <- function(A, Tmat=diag(ncol(A)), Target=NULL, normalize=FALSE, eps=1e-5, maxit=1000, randomStarts = 0, L=NULL) {
+   if (missing(A) & !is.null(L)){
+     message("Use of 'L=' is deprecated. Please use 'A='. ")
+     A <- L
+     Tmat <- diag(ncol(L))
+   }
    if(is.null(Target)) stop("argument Target must be specified.")
    GPFRSorth(A, Tmat=Tmat, normalize=normalize, eps=eps, maxit=maxit,
            method="target", methodArgs=list(Target=Target), randomStarts = randomStarts)
    }
 
-targetQ <- function(A, Tmat=diag(ncol(A)), Target=NULL, normalize=FALSE, eps=1e-5, maxit=1000, randomStarts = 0) {
+targetQ <- function(A, Tmat=diag(ncol(A)), Target=NULL, normalize=FALSE, eps=1e-5, maxit=1000, randomStarts = 0, L=NULL) {
+   if (missing(A) & !is.null(L)){
+     message("Use of 'L=' is deprecated. Please use 'A='. ")
+     A <- L
+     Tmat <- diag(ncol(L))
+   }
    if(is.null(Target)) stop("argument Target must be specified.")
    GPFRSoblq(A, Tmat=Tmat, normalize=normalize, eps=eps, maxit=maxit,
            method="target", methodArgs=list(Target=Target), randomStarts = randomStarts)
@@ -114,14 +124,24 @@ vgQ.target <- function(L, Target=NULL){
 ###########################################
 ###########################################
 
-pstT <- function(A, Tmat=diag(ncol(A)), W=NULL, Target=NULL, normalize=FALSE, eps=1e-5, maxit=1000, randomStarts = 0) {
+pstT <- function(A, Tmat=diag(ncol(A)), W=NULL, Target=NULL, normalize=FALSE, eps=1e-5, maxit=1000, randomStarts = 0, L=NULL) {
+   if (missing(A) & !is.null(L)){
+     message("Use of 'L=' is deprecated. Please use 'A='. ")
+     A <- L
+     Tmat <- diag(ncol(L))
+   }
    if(is.null(W))      stop("argument W must be specified.")
    if(is.null(Target)) stop("argument Target must be specified.")
    GPFRSorth(A, Tmat=Tmat, normalize=normalize, eps=eps, maxit=maxit, 
 	    method="pst", methodArgs=list(W=W, Target=Target), randomStarts = randomStarts)
    }
 
-pstQ <- function(A, Tmat=diag(ncol(A)), W=NULL, Target=NULL, normalize=FALSE, eps=1e-5, maxit=1000, randomStarts = 0) {
+pstQ <- function(A, Tmat=diag(ncol(A)), W=NULL, Target=NULL, normalize=FALSE, eps=1e-5, maxit=1000, randomStarts = 0, L=NULL) {
+   if (missing(A) & !is.null(L)){
+     message("Use of 'L=' is deprecated. Please use 'A='. ")
+     A <- L
+     Tmat <- diag(ncol(L))
+   }
    if(is.null(W))      stop("argument W must be specified.")
    if(is.null(Target)) stop("argument Target must be specified.")
    GPFRSoblq(A, Tmat=Tmat, normalize=normalize, eps=eps, maxit=maxit, 
