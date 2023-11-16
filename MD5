@@ -1,9 +1,9 @@
-d4accaab480dc686d1d88400dcf2a958 *DESCRIPTION
+4fc971955641ea1a9c3c0b8945cffa35 *DESCRIPTION
 8d3760316702f92bf18374889cd78b4c *NAMESPACE
-5caa343d2fd37a5d48ab738b8a0067f6 *NEWS
+9b1012d061f7cfc20dc2c54c7548b68d *NEWS
 8a4132c99961e9e87f8313ab3c5dbb3d *R/GPF.R
 9387383de4cdef2b30c841a672d11c48 *R/GPFRS.R
-4852adf358dfffdca3d9945e9f67dbe0 *R/NormalizingWeight.R
+9f4b96a2dfee75edb4a4901f065918f0 *R/NormalizingWeight.R
 7dda85d18aa7cb5ab36989f45cbf06d0 *R/RandomStart.R
 b2283c391ae6a2be35b3fdd08ac120d0 *R/echelon.R
 0d865c154a7c2323eced4a2dc5300f92 *R/eiv.R
@@ -16,10 +16,10 @@ c24ad5ddf7986bb0e715af725aaee8d6 *build/vignette.rds
 e8a386c68402ae9d8f05c7a9bea60c51 *inst/CITATION
 d59ad748dce6db8c3df0362d12740958 *inst/doc/GPAguide.R
 2db7d6115c86661237cab31de84c88bd *inst/doc/GPAguide.Stex
-19b6f4e49e660ff7ecf65cd6224bc8ad *inst/doc/GPAguide.pdf
+6eb21917550a6ef92d7c03a78ca0db4a *inst/doc/GPAguide.pdf
 f77834c2bfa540de1868e7e103e3db92 *inst/doc/GPArotateDF.R
 e150ab1c5873face932f18d69bb87090 *inst/doc/GPArotateDF.Stex
-f86d43ba5138b062f8159611201af42f *inst/doc/GPArotateDF.pdf
+f7fea65a7988a186f7d589b022fa616d *inst/doc/GPArotateDF.pdf
 9aa344a20772d0646a298efdeb7e7d51 *man/00.GPArotation.Rd
 aae0b4001eaa7075a4bf5927e0301b80 *man/GPA.Rd
 b07d349e1b8f30647094651a5d2a0afd *man/Harman.Rd
@@ -34,6 +34,7 @@ bc7ef974fb6de83a10f5c105d89814a2 *man/rotations.Rd
 188ee016861d738a01c0afc7f09be4db *man/vgQ.Rd
 676d839d54d47a340f6ba36a5934221b *tests/Harman.R
 9f69c980178c705014f0b982c1200f0f *tests/Jennrich2002.R
+b23cf38f1863aec555c6f4c910c41d66 *tests/KaiserNormalization.R
 781b18f963b96896b8db5224e710ebd1 *tests/MASSoblimin.R
 46d697ec9edc75bcc1822dbdae7c3f0f *tests/Revelle.R
 4a45741f72f718179f8070cf11681727 *tests/Thurstone.R
