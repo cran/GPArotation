@@ -4,6 +4,14 @@ Known problems
 	algorithm gets stuck and does not improve (so does not converge). The
 	workaround is to restart with a very slightly perturbed starting point.       
 
+Changes in GPArotation version 2024.2-1
+
+   o    Improved Random.Start for orthonormal matrix generation 
+
+   o    Added Bi-Geomin rotation criterion 
+   
+   o    Edits to the manual pages 
+
 Changes in GPArotation version 2023.11-1
 
    o    Updated NormalizingWeight to handle cases with a row of zeroes 
@@ -129,8 +137,7 @@ Changes in GPArotation version 2006.2-1
 Changes in GPArotation version 2005.10-1
 
    o	warning message about non-convergence expanded to indicate function.  
-  
-
-GPArotation version 2005.4-1
+ 
+Changes in GPArotation version 2005.4-1
 
    o	First released version.

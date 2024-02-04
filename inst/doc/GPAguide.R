@@ -7,13 +7,13 @@
 
 
 ###################################################
-### code chunk number 2: GPAguide.Stex:28-29
+### code chunk number 2: GPAguide.Stex:35-36
 ###################################################
 library("GPArotation")  
 
 
 ###################################################
-### code chunk number 3: GPAguide.Stex:60-68
+### code chunk number 3: GPAguide.Stex:67-75
 ###################################################
 data(ability.cov)
 z <- factanal(factors = 2, covmat = ability.cov, rotation = "none")
@@ -26,17 +26,19 @@ oblimin(loadings(z))
 
 
 ###################################################
-### code chunk number 4: GPAguide.Stex:81-86
+### code chunk number 4: GPAguide.Stex:88-95
 ###################################################
 y <- factanal(factors=3, covmat=ability.cov, rotation = "none")
 y.quart <- quartimax(y$loadings)
-max(abs(y.quart$loadings %*% t(y.quart$Th) - unclass(y$loadings)))
+max( loadings(y.quart) %*% t(y.quart$Th) - loadings(y) )
 y.obli <- oblimin(y$loadings, normalize=TRUE, randomStarts=15)
-max(abs(y.obli$loadings %*% t(y.obli$Th) - unclass(y$loadings)))
+max( loadings(y.obli) %*% t(y.obli$Th) - loadings(y) )
+# last equation on Page 678
+max( loadings(y.obli) - loadings(y) %*% solve(t(y.obli$Th)) )
 
 
 ###################################################
-### code chunk number 5: GPAguide.Stex:89-92
+### code chunk number 5: GPAguide.Stex:98-101
 ###################################################
 y <- factanal(factors=3, covmat=ability.cov, rotation = "none", randomStarts=15)
 y.obli <- oblimin(y$loadings, normalize=TRUE, randomStarts=15)
@@ -44,7 +46,7 @@ max(abs(y.obli$Phi  - t(y.obli$Th) %*% y.obli$Th))
 
 
 ###################################################
-### code chunk number 6: GPAguide.Stex:102-106
+### code chunk number 6: GPAguide.Stex:111-115
 ###################################################
 data(Thurstone, package = "GPArotation")
 infomaxQ(box26, randomStarts = 100) # 100 random starts
@@ -53,7 +55,7 @@ infomaxQ(box26, randomStarts = 1) # also a single random start
 
 
 ###################################################
-### code chunk number 7: GPAguide.Stex:153-179
+### code chunk number 7: GPAguide.Stex:162-188
 ###################################################
 origdigits <- options("digits")
 options(digits = 2)
@@ -84,7 +86,7 @@ options(digits = origdigits$digits)
 
 
 ###################################################
-### code chunk number 8: GPAguide.Stex:192-206
+### code chunk number 8: GPAguide.Stex:201-215
 ###################################################
 A <- matrix(c(.664, .688, .492, .837, .705, .82, .661, .457, .765, .322, 
   .248, .304, -0.291, -0.314, -0.377, .397, .294, .428, -0.075,.192,.224,

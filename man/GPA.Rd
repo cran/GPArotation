@@ -137,6 +137,8 @@
    \code{\link{tandemII}},
    \code{\link{geominT}},
    \code{\link{geominQ}},
+   \code{\link{bigeominT}},
+   \code{\link{bigeominQ}},
    \code{\link{cfT}},
    \code{\link{cfQ}},
    \code{\link{equamax}},

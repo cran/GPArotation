@@ -31,6 +31,10 @@
    (Sum of Squared loadings), (see e.g. Harman 1976, sections 2.4 and 12.4).
 }
 
+\details{
+For examples of print and summary functions, see \code{\link{GPForth}}. 
+}
+
 \references{
    Harman, H.H. (1976). \emph{Modern Factor Analysis.} The University of Chicago Press. 
 

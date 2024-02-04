@@ -22,6 +22,13 @@
  options(continue="  ")
 \end{Scode}
 
+\begin{center}
+\section*{Gradient Projection Factor Rotation \\  ~~\\The \texttt{GPArotation} Package}
+\end{center}
+\begin{center}
+Author: Coen A. Bernaards
+\end{center}
+
 \section*{GPArotation Functions}
 
 In R, the functions in this package are made available with
@@ -81,9 +88,11 @@ Recovery of the unrotated loadings matrix is consistent with the definitions use
 \begin{Scode}
 y <- factanal(factors=3, covmat=ability.cov, rotation = "none")
 y.quart <- quartimax(y$loadings)
-max(abs(y.quart$loadings %*% t(y.quart$Th) - unclass(y$loadings)))
+max( loadings(y.quart) %*% t(y.quart$Th) - loadings(y) )
 y.obli <- oblimin(y$loadings, normalize=TRUE, randomStarts=15)
-max(abs(y.obli$loadings %*% t(y.obli$Th) - unclass(y$loadings)))
+max( loadings(y.obli) %*% t(y.obli$Th) - loadings(y) )
+# last equation on Page 678
+max( loadings(y.obli) - loadings(y) %*% solve(t(y.obli$Th)) )
 \end{Scode}
 By the same definitions logic, the factor correlation matrix is calculated as  \cite{gpa.rotate} (page 695),
 \begin{Scode}

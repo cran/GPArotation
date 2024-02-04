@@ -365,6 +365,33 @@ vgQ.geomin <- function(L, delta=.01){
        f= sum(pro), 
        Method="Geomin")
   }
+  
+###########################################
+###########################################
+###
+###               BI-GEOMIN
+###
+###########################################
+###########################################
+
+bigeominT <- function(A, Tmat=diag(ncol(A)), delta=.01, normalize=FALSE, eps=1e-5, maxit=1000, randomStarts = 0){
+   GPFRSorth(A, Tmat=Tmat, normalize=normalize, eps=eps, maxit=maxit,
+           method="bigeomin", methodArgs=list(delta=delta), randomStarts = randomStarts)
+   }
+
+bigeominQ <- function(A, Tmat=diag(ncol(A)), delta=.01, normalize=FALSE, eps=1e-5, maxit=1000, randomStarts = 0){
+   GPFRSoblq(A, Tmat=Tmat, normalize=normalize, eps=eps, maxit=maxit,
+            method="bigeomin", methodArgs=list(delta=delta), randomStarts = randomStarts)
+   }
+  
+  
+vgQ.bigeomin <- function(L, delta = 0.01){
+   Lg <- L[ , -1, drop = FALSE]
+   out <- vgQ.geomin(Lg, delta = delta) 
+     list(Gq=cbind(0, out$Gq),
+       f= out$f, 
+       Method="Bi-Geomin")
+  }
 
 ###########################################
 ###########################################

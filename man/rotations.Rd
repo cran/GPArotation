@@ -17,6 +17,8 @@
 \alias{tandemII}
 \alias{geominT}
 \alias{geominQ}
+\alias{bigeominT}
+\alias{bigeominQ}
 \alias{cfT}
 \alias{cfQ}
 \alias{equamax}
@@ -55,6 +57,10 @@
     geominT(A, Tmat=diag(ncol(A)), delta=.01, normalize=FALSE, eps=1e-5, 
     		maxit=1000, randomStarts=0)
     geominQ(A, Tmat=diag(ncol(A)), delta=.01, normalize=FALSE, eps=1e-5, 
+    		maxit=1000, randomStarts=0)
+    bigeominT(A, Tmat=diag(ncol(A)), delta=.01, normalize=FALSE, eps=1e-5, 
+    		maxit=1000, randomStarts=0)
+    bigeominQ(A, Tmat=diag(ncol(A)), delta=.01, normalize=FALSE, eps=1e-5, 
     		maxit=1000, randomStarts=0)
     cfT(A, Tmat=diag(ncol(A)), kappa=0, normalize=FALSE, eps=1e-5, 
     		maxit=1000, randomStarts=0)
@@ -129,6 +135,8 @@
  \code{tandemII}  \tab orthogonal \tab  Tandem principle II criterion		   \cr
  \code{geominT}   \tab orthogonal \tab 				   \cr
  \code{geominQ}   \tab oblique	   \tab         			   \cr
+ \code{bigeominT} \tab orthogonal \tab 				   \cr
+ \code{bigeominQ} \tab oblique	   \tab         			   \cr
  \code{cfT}	   \tab orthogonal \tab  Crawford-Ferguson family	   \cr
  \code{cfQ}	   \tab oblique	   \tab  Crawford-Ferguson family	   \cr
  \code{equamax}   \tab orthogonal \tab  Crawford-Ferguson family	   \cr
@@ -218,28 +226,10 @@
 \seealso{
    \code{\link{GPFRSorth}}, 
    \code{\link{GPFRSoblq}}, 
-   \code{\link{WansbeekMeijer}}, 
+   \code{\link{vgQ}},
    \code{\link{eiv}}, 
    \code{\link{echelon}}, 
-   \code{\link{vgQ}},
-   \code{\link{vgQ.oblimin}},
-   \code{\link{vgQ.quartimin}},
-   \code{\link{vgQ.target}},
-   \code{\link{vgQ.pst}},
-   \code{\link{vgQ.oblimax}},
-   \code{\link{vgQ.entropy}},
-   \code{\link{vgQ.quartimax}},
-   \code{\link{vgQ.varimax}},
-   \code{\link{vgQ.simplimax}},
-   \code{\link{vgQ.bentler}},
-   \code{\link{vgQ.tandemI}},
-   \code{\link{vgQ.tandemII}},
-   \code{\link{vgQ.geomin}},
-   \code{\link{vgQ.cf}},
-   \code{\link{vgQ.infomax}},
-   \code{\link{vgQ.mccammon}},
-   \code{\link{vgQ.bifactor}},
-   \code{\link{vgQ.varimin}},
+   \code{\link{WansbeekMeijer}}, 
    \code{\link[stats]{factanal}}, 
    \code{\link[stats]{varimax}}
 }

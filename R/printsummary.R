@@ -1,6 +1,6 @@
 # summaries for GPArotation
 # S3 class functions
-# pint.GPArotation
+# print.GPArotation
 # summary.GPArotation
 # print.summary.GPArotation
 

@@ -43,7 +43,8 @@ Utility functions\cr
 \tabular{ll}{
 \code{\link{Random.Start}} \tab Generate random a starting matrix \cr
 \code{\link{NormalizingWeight}} \tab Kaiser normalization (not exported from NAMESPACE) \cr
-}
+\code{\link{print.GPArotation}}\tab Print results (S3 level function) \cr
+\code{\link{summary.GPArotation}} \tab Summary of results (S3 level function) \cr}
 
 Rotations\cr
 \tabular{ll}{
@@ -64,6 +65,8 @@ Rotations\cr
 \code{\link{tandemII}} \tab The Tandem Criteria Principle II rotation \cr
 \code{\link{geominT}} \tab Orthogonal Geomin rotation \cr
 \code{\link{geominQ}} \tab Oblique Geomin rotation \cr
+\code{\link{bigeominT}} \tab Orthogonal Bi-Geomin rotation \cr
+\code{\link{bigeominQ}} \tab Oblique Bi-Geomin rotation \cr
 \code{\link{cfT}} \tab Orthogonal Crawford-Ferguson Family rotation \cr
 \code{\link{cfQ}} \tab Oblique Crawford-Ferguson Family rotation \cr
 \code{\link{equamax}} \tab Equamax rotation \cr
@@ -74,6 +77,8 @@ Rotations\cr
 \code{\link{varimin}} \tab Varimin rotation \cr
 \code{\link{bifactorT}} \tab Orthogonal Bifactor rotation \cr
 \code{\link{bifactorQ}} \tab Oblique Bifactor rotation \cr
+\code{\link{eiv}} \tab Errors-in-Variables rotation \cr
+\code{\link{echelon}} \tab Echelon rotation \cr
 }
 
 
@@ -92,6 +97,7 @@ vgQ routines to compute value and gradient of the criterion (not exported from N
 \code{\link{vgQ.tandemI}}\tab The Tandem Criteria Principle I vgQ \cr
 \code{\link{vgQ.tandemII}}\tab The Tandem Criteria Principle II vgQ \cr
 \code{\link{vgQ.geomin}}\tab Geomin vgQ \cr
+\code{\link{vgQ.bigeomin}}\tab Bi-Geomin vgQ \cr
 \code{\link{vgQ.cf}} \tab Crawford-Ferguson Family vgQ \cr
 \code{\link{vgQ.infomax}} \tab Infomax vgQ \cr
 \code{\link{vgQ.mccammon}}\tab McCammon Minimum Entropy Ratio vgQ \cr
@@ -102,8 +108,8 @@ vgQ routines to compute value and gradient of the criterion (not exported from N
 Data sets included in the GPArotation package \cr
 \tabular{ll}{
 \code{\link{Harman}}\tab Initial factor loading matrix for Harman's 8 physical variables \cr
-\code{\link{Thurstone}} \tab box20 and box26 initial factor loadings matrices. \cr
-\code{\link{WansbeekMeijer}} \tab Netherlands TV viewership. \cr
+\code{\link{Thurstone}} \tab box20 and box26 initial factor loadings matrices \cr
+\code{\link{WansbeekMeijer}} \tab Netherlands TV viewership \cr
 }
 
 

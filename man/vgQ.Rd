@@ -13,6 +13,7 @@
 \alias{vgQ.tandemI}
 \alias{vgQ.tandemII}
 \alias{vgQ.geomin}
+\alias{vgQ.bigeomin}
 \alias{vgQ.cf}
 \alias{vgQ.infomax}
 \alias{vgQ.mccammon}
@@ -34,6 +35,7 @@
     vgQ.tandemI(L)
     vgQ.tandemII(L)
     vgQ.geomin(L, delta=.01)
+    vgQ.bigeomin(L, delta=.01)
     vgQ.cf(L, kappa=0)
     vgQ.infomax(L)
     vgQ.mccammon(L)
@@ -82,6 +84,7 @@
 \code{vgQ.tandemI} \tab orthogonal	   \tab Tandem principle I criterion	\cr
 \code{vgQ.tandemII} \tab orthogonal	   \tab Tandem principle II criterion	\cr
 \code{vgQ.geomin}    \tab orthogonal or oblique  \tab 				   \cr
+\code{vgQ.bigeomin}    \tab orthogonal or oblique  \tab 				   \cr
 \code{vgQ.cf}		   \tab orthogonal or oblique \tab  Crawford-Ferguson family	   \cr
 \code{vgQ.cubimax}   \tab orthogonal    \tab  	\cr
 \code{vgQ.infomax}   \tab orthogonal or oblique   \tab 				   \cr
@@ -105,36 +108,7 @@
   
 }
 \seealso{
-   \code{\link{GPForth}}, 
-   \code{\link{GPFoblq}}, 
-   \code{\link{rotations}},
-   \code{\link{oblimin}},
-   \code{\link{quartimin}},
-   \code{\link{targetT}},
-   \code{\link{targetQ}},
-   \code{\link{pstT}},
-   \code{\link{pstQ}},
-   \code{\link{oblimax}},
-   \code{\link{entropy}},
-   \code{\link{quartimax}},
-   \code{\link{Varimax}},
-   \code{\link{simplimax}},
-   \code{\link{bentlerT}},
-   \code{\link{bentlerQ}},
-   \code{\link{tandemI}},
-   \code{\link{tandemII}},
-   \code{\link{geominT}},
-   \code{\link{geominQ}},
-   \code{\link{cfT}},
-   \code{\link{cfQ}},
-   \code{\link{equamax}},
-   \code{\link{parsimax}},
-   \code{\link{infomaxT}},
-   \code{\link{infomaxQ}},
-   \code{\link{mccammon}},
-   \code{\link{varimin}},
-   \code{\link{bifactorT}},
-   \code{\link{bifactorQ}}
+   \code{\link{rotations}}
 }
 \references{
   Bernaards, C.A. and Jennrich, R.I. (2005) Gradient Projection Algorithms 
