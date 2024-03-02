@@ -121,7 +121,7 @@ To further investigate the local minima it is recommended to use the {\em fungib
 using the \texttt{faMain} function. When in doubt, trying random initial rotation matrix is advised.
 
 For a detailed discussion, consult  \cite{nguwall}. Additional algorithmic considerations are in
-\cite{gpa.rotate} (page 680).
+\cite{gpa.rotate} (page 680). 
 
 
 \subsection*{An Example of Target Rotation}

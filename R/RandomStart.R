@@ -4,7 +4,6 @@
 #  qr.Q(qr(matrix(rnorm(k*k),k)))
 #  }
 
-# Changed after discussion with Yves Rosseel
 # Stewart, G. W. (1980). The Efficient Generation of Random Orthogonal Matrices 
 # with an Application to Condition Estimators. SIAM Journal on Numerical Analysis, 
 # 17(3), 403-409. http://www.jstor.org/stable/2156882

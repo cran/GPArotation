@@ -59,6 +59,43 @@ all.ok <- TRUE
     all.ok <- FALSE  
     } 
 
+  v <- oblimin(L, gam = 1, eps=1e-8)$loadings 
+  tst <- t(matrix(c(
+  	 0.2160827,  0.5403732,
+ 	-0.4787025,  1.0224006,
+  	-0.6800410,  1.4244177,
+ 	-0.3758706,  0.7781390,
+	 1.4517362, -0.5873946,
+	 1.1002585, -0.3396290
+      ), 2, 6))
+ 
+  if( fuzz < max(abs(v - tst))) {
+    cat("Calculated value is not the same as test value in test rotations 1-gam=1. Value:\n")
+    print(v, digits=18)
+    cat("difference:\n")
+    print(v - tst, digits=18)
+    all.ok <- FALSE  
+    } 
+
+  v <- oblimin(L, gam = .1, eps=1e-8)$loadings 
+  tst <- t(matrix(c(
+	 0.37893531,  0.47408606,
+	-0.02465543,  0.65257986,
+	-0.04530330,  0.90557045,
+	-0.02840333,  0.49349573,
+	 0.99740452, -0.05088932,
+	 0.79467442,  0.04241284
+      ), 2, 6))
+ 
+  if( fuzz < max(abs(v - tst))) {
+    cat("Calculated value is not the same as test value in test rotations 1-gam=.1. Value:\n")
+    print(v, digits=18)
+    cat("difference:\n")
+    print(v - tst, digits=18)
+    all.ok <- FALSE  
+    } 
+
+
 
   v <- quartimin(L, eps=1e-8)$loadings
   tst <- t(matrix(c(
@@ -98,6 +135,16 @@ all.ok <- TRUE
     all.ok <- FALSE  
     } 
 
+  v <- targetT(L = L, Target=matrix(c(rep(1,3),rep(0,6),rep(1,3)), 6,2),
+               eps=1e-5)$loadings 
+  if( fuzz < max(abs(v - tst))) {
+    cat("Calculated value is not the same as test value in test rotations 3L. Value:\n")
+    print(v, digits=18)
+    cat("difference:\n")
+    print(v - tst, digits=18)
+    all.ok <- FALSE  
+    } 
+
 
   v <- targetQ(L, Target=matrix(c(rep(1,3),rep(0,6),rep(1,3)), 6,2),
                eps=1e-5)$loadings  
@@ -112,6 +159,16 @@ all.ok <- TRUE
 
   if( fuzz < max(abs(v - tst))) {
     cat("Calculated value is not the same as test value in test rotations 4. Value:\n")
+    print(v, digits=18)
+    cat("difference:\n")
+    print(v - tst, digits=18)
+    all.ok <- FALSE  
+    } 
+
+  v <- targetQ(L = L, Target=matrix(c(rep(1,3),rep(0,6),rep(1,3)), 6,2),
+               eps=1e-5)$loadings  
+  if( fuzz < max(abs(v - tst))) {
+    cat("Calculated value is not the same as test value in test rotations 4L. Value:\n")
     print(v, digits=18)
     cat("difference:\n")
     print(v - tst, digits=18)
@@ -141,6 +198,18 @@ all.ok <- TRUE
     all.ok <- FALSE  
     } 
 
+  v <- pstT(L = L, W = matrix(c(rep(.4,6),rep(.6,6)), 6,2),
+           Target= matrix(c(rep(1,3),rep(0,6),rep(1,3)), 6,2),
+               maxit=1000, eps=1e-5)$loadings     
+  if( fuzz < max(abs(v - tst))) {
+    cat("Calculated value is not the same as test value in test rotations 5L. Value:\n")
+    print(v, digits=18)
+    cat("difference:\n")
+    print(v - tst, digits=18)
+    all.ok <- FALSE  
+    } 
+
+
 
  # Does not converge even with maxit=10000, but the loadings matrix is not
  #  changing. Possibly the gradient is extremely large even very close to opt.
@@ -162,7 +231,19 @@ all.ok <- TRUE
     cat("difference:\n")
     print(v - tst, digits=18)
     all.ok <- FALSE  
-    } 
+    }
+     
+    v <- pstQ(L = L, W = matrix(c(rep(.4,6),rep(.6,6)), 6,2),
+           Target= matrix(c(rep(1,3),rep(0,6),rep(1,3)), 6,2),
+               maxit=1000, eps=1e-5)$loadings     
+  if( fuzz < max(abs(v - tst))) {
+    cat("Calculated value is not the same as test value in test rotations 6L. Value:\n")
+    print(v, digits=18)
+    cat("difference:\n")
+    print(v - tst, digits=18)
+    all.ok <- FALSE  
+    }
+
 
 #    oblimax
 # this is test value on one computer
@@ -387,6 +468,44 @@ all.ok <- TRUE
     } 
 
 
+  v <- bigeominT(L, eps = 1e-5, delta = 0.01)$loadings  
+  tst <- t(matrix(c(
+	0.735864675930537948,  0.0572554836159610558,
+	0.537832587849186305,  0.3484299786828288781,
+	0.736693622718023078,  0.4889819217894930681,
+	0.398234350199199783,  0.2683070932862005598,
+	0.823835376232448180, -0.5185113350380095021,
+ 	0.727481839163037991, -0.3703731487890759011
+      ), 2, 6))
+
+  if( fuzz < max(abs(v - tst))) {
+    cat("Calculated value is not the same as test value in test rotations 16-bigeominT. Value:\n")
+    print(v, digits=18)
+    cat("difference:\n")
+    print(v - tst, digits=18)
+    all.ok <- FALSE  
+    } 
+
+
+  v <- bigeominQ(L, eps = 1e-5, delta = 0.01)$loadings  
+  tst <- t(matrix(c(
+	0.735864459785110725,  0.0572566968425438083,
+	0.537831272508815683,  0.3484308654124375071,
+	0.736691776787216535,  0.4889831363831567135,
+	0.398233337326754422,  0.2683077498589007681,
+	0.823837333630433988, -0.5185099767738823306,
+	0.727483237333638733, -0.3703719493837349663
+      ), 2, 6))
+
+  if( fuzz < max(abs(v - tst))) {
+    cat("Calculated value is not the same as test value in test rotations 17-bigeominQ. Value:\n")
+    print(v, digits=18)
+    cat("difference:\n")
+    print(v - tst, digits=18)
+    all.ok <- FALSE  
+    } 
+
+
   v <- cfT(L, eps=1e-8)$loadings	
   tst <- t(matrix(c(
           0.534721263659975854, 0.508771247100584523,
@@ -582,7 +701,6 @@ all.ok <- TRUE
    data(Harman, package= "GPArotation")
    v <- varimin(Harman8, eps=1e-5)$loadings
   tst <- t(matrix(c(
-
 	0.800626657046876855, -0.452452158825595752,
 	0.783606930490612252, -0.524447498313301397,
 	0.742635936060292656, -0.522609669324872517,
@@ -623,8 +741,96 @@ all.ok <- TRUE
     print(v - tst, digits=18)
     all.ok <- FALSE  
     } 
+    
+ # TAKEN FROM THE EXAMPLES IN THE DOCUMENTATION OF echelon
 	  
- 
+ data(WansbeekMeijer)
+ fa.unrotated  <- factanal(factors = 2, covmat=NetherlandsTV, rotation="none")
+ v <- echelon(fa.unrotated$loadings)$loadings
+ tst <- matrix(c(
+		0.7910866, 0.000000000,
+		0.8356693, 0.086562877,
+		0.7732175, 0.003599155,
+		0.4712891, 0.520430204,
+		0.4716313, 0.596050663,
+		0.4340904, 0.693182608,
+		0.3934293, 0.610972389
+   ), ncol = 2, nrow = 7, byrow=7)
+
+  if( fuzz < max(abs(v - tst))) {
+    cat("Calculated value is not the same as test value in test rotations 23. Value:\n")
+    print(v, digits=18)
+    cat("difference:\n")
+    print(v - tst, digits=18)
+    all.ok <- FALSE  
+    } 
+
+# TAKEN FROM THE EXAMPLES IN THE DOCUMENTATION OF eiv
+
+ v <- eiv(fa.unrotated$loadings)$loadings
+ tst <- matrix(c(
+	 	 1.0000000, 0.0000000,
+		 0.0000000, 1.0000000,
+		 0.9334902, 0.0415785,
+		-5.7552381, 6.0121639,
+		-6.6776277, 6.8857539,
+		-7.9104168, 8.0078509,
+		-6.9585766, 7.0581340
+   ), ncol = 2, nrow = 7, byrow=7)
+
+  if( fuzz < max(abs(v - tst))) {
+    cat("Calculated value is not the same as test value in test rotations 24. Value:\n")
+    print(v, digits=18)
+    cat("difference:\n")
+    print(v - tst, digits=18)
+    all.ok <- FALSE  
+    } 
+
+# BIFACTOR
+
+  data(WansbeekMeijer)
+  fa.unrotated  <- factanal(factors = 3, covmat=NetherlandsTV, rotation="none")
+  v <- bifactorT(fa.unrotated$loadings)$loadings
+
+ tst <- matrix(c(
+	0.605259846207760410,  0.50926282550276680272, -0.0326441696928007064,
+	0.674848533008883589,  0.49892997353743967492,  0.0360559565502543422,
+	0.585307624074672961,  0.50452427555859225006, -0.0116655363009391944,
+	0.569143997010692737,  0.07907134469847305891,  0.4496106087464453172,
+	0.639591951170676909, -0.00317621525167442742,  0.3903956610664964244,
+	0.644285080202307459, -0.06194060671151470354,  0.4889273316625122323,
+	0.894466584777320994, -0.44135797428894490979, -0.0115183403900823399
+   ), ncol = 3, nrow = 7, byrow=7)
+  if( fuzz < max(abs(v - tst))) {
+    cat("Calculated value is not the same as test value in test rotations bifactorT. Value:\n")
+    print(v, digits=18)
+    cat("difference:\n")
+    print(v - tst, digits=18)
+    all.ok <- FALSE  
+    } 
+
+
+  v <- bifactorQ(fa.unrotated$loadings)$loadings
+
+ tst <- matrix(c(
+	0.639628269247016989,  0.4617887681341789063, -0.03408526722627130967,
+	0.708202536330854282,  0.4531948277009248405,  0.03509478386512845938,
+	0.619356995328652293,  0.4604997427039814184, -0.01303680319918767982,
+	0.572539420889668138,  0.0819716834028682007,  0.45225086629811012129,
+	0.637128483915923693, -0.0107264127434737802,  0.39334646255480443244,
+	0.637511978242973232, -0.0601392817604798208,  0.49259101012935263553,
+	0.861232867683719872, -0.5044079449050349329, -0.00751942773799910234
+   ), ncol = 3, nrow = 7, byrow=7)
+  if( fuzz < max(abs(v - tst))) {
+    cat("Calculated value is not the same as test value in test rotations bifactorQ. Value:\n")
+    print(v, digits=18)
+    cat("difference:\n")
+    print(v - tst, digits=18)
+    all.ok <- FALSE  
+    } 
+
+
+   
 cat("tests completed.\n")
 
 

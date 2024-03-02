@@ -9,7 +9,7 @@
  require("GPArotation")
  search()
  Sys.info()
-
+ 
 require("stats")  
 require("GPArotation")  
 
@@ -26,6 +26,38 @@ set.seed(46)
 z2 <- quartimin(athl, Tmat = Random.Start(3))
 head(z2$loadings)
 
+# WITHOUT SORTING
+all.ok <- TRUE  
+# are z1 and z2 loadings different? Test at the 5th decimal
+# if tst = T then there are differences (good). if tst = F then no differences (bad)
+tst <- max(z1$loadings - z2$loadings) > 1e-5
+if (! tst) { all.ok <- F}
+# rotation matrix
+tst <- max(z1$Th - z2$Th) > 1e-5
+if (! tst) { all.ok <- F}
+# correlation matrix
+tst <- max(z1$Phi - z2$Phi) > 1e-5
+if (! tst) { all.ok <- F}
+
+if (! all.ok) stop("some tests FAILED before sorting")
+
+
+# NOW WE SORT: z1 to z1s and z2 to z2s
+z1s <- print(z1, sortLoadings = TRUE, rotateMat = TRUE, Table = TRUE)
+z2s <- print(z2, sortLoadings = TRUE, rotateMat = TRUE, Table = TRUE)
+all.ok <- TRUE  
+# are z1 and z2 loadings different? Test at the 5th decimal
+# if tst = T then there are differences (bad). if tst = F then no differences (good)
+tst <- max(z1s$loadings - z2s$loadings) > 1e-5
+if (tst) { all.ok <- F}
+# rotation matrix
+tst <- max(z1s$Th - z2s$Th) > 1e-5
+if (tst) { all.ok <- F}
+# correlation matrix
+tst <- max(z1s$Phi - z2s$Phi) > 1e-5
+if (tst) { all.ok <- F}
+
+if (! all.ok) stop("some tests FAILED after sorting")
 
 #> z1
 #Oblique rotation method Quartimin converged.
@@ -77,3 +109,19 @@ head(z2$loadings)
 #[1,] 1.000 0.554 0.259
 #[2,] 0.554 1.000 0.186
 #[3,] 0.259 0.186 1.000
+
+
+##########################################################
+# RUNNING A PRINT WITHOUT ERRORS
+##########################################################
+#  data(ability.cov)
+#  L <- loadings(factanal(factors = 2, covmat=ability.cov))
+#
+#v <- GPFRSoblq(L, eps = 1e-7, method = "oblimin", methodArgs = list(gam = .5), randomStarts = 100)
+#GPArotation:::print.GPArotation(v, rotateMat = T, Table = T)
+#print(v, rotateMat = T, Table = T)
+#
+#GPArotation:::summary.GPArotation(v) 
+#summary(v)
+
+

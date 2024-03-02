@@ -25,6 +25,8 @@ echelon <- function(L, reference=seq(NCOL(L)), ...) {
    B[-reference,] <- L[-reference,, drop=FALSE] %*% Tmat
 
    dimnames(B) <- list(dimnames(L)[[1]], paste("factor", seq(NCOL(L))))
-   list(loadings=B, Th=Tmat, method="echelon", orthogonal=TRUE, 
+   r <- list(loadings=B, Th=Tmat, method="echelon", orthogonal=TRUE, 
        convergence=TRUE)
+   class(r) <- "GPArotation"
+   r
 }

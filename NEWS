@@ -4,6 +4,12 @@ Known problems
 	algorithm gets stuck and does not improve (so does not converge). The
 	workaround is to restart with a very slightly perturbed starting point.       
 
+Changes in GPArotation version 2024.3-1
+
+   o    Added tests for use in automated validation systems 
+
+   o    Added correct class to echelon and eiv rotation 
+   
 Changes in GPArotation version 2024.2-1
 
    o    Improved Random.Start for orthonormal matrix generation 

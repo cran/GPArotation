@@ -1,5 +1,5 @@
 Package: GPArotation
-Version: 2024.2-1
+Version: 2024.3-1
 Title: Gradient Projection Factor Rotation
 Authors@R: c( 
 	person("Coen", "Bernaards", email = "cab.gparotation@gmail.com", role = c("aut","cre")),
@@ -17,10 +17,10 @@ Imports: stats
 License: GPL (>= 2)
 URL: https://optimizer.r-forge.r-project.org/GPArotation_www/
 NeedsCompilation: no
-Packaged: 2024-02-04 16:11:29 UTC; coen
+Packaged: 2024-03-01 19:57:44 UTC; coen
 Author: Coen Bernaards [aut, cre],
   Paul Gilbert [aut],
   Robert Jennrich [aut]
 Maintainer: Coen Bernaards <cab.gparotation@gmail.com>
 Repository: CRAN
-Date/Publication: 2024-02-04 19:30:02 UTC
+Date/Publication: 2024-03-02 00:12:35 UTC
