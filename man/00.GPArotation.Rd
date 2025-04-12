@@ -41,12 +41,15 @@ Gradient Projection Rotation Algorithms (code unchanged since 2008)\cr
 
 Utility functions\cr
 \tabular{ll}{
+\code{\link{print.GPArotation}}\tab Print results (S3 level function) \cr
+\code{\link{summary.GPArotation}} \tab Summary of results (S3 level function) \cr
 \code{\link{Random.Start}} \tab Generate random a starting matrix \cr
 \code{\link{NormalizingWeight}} \tab Kaiser normalization (not exported from NAMESPACE) \cr
-\code{\link{print.GPArotation}}\tab Print results (S3 level function) \cr
-\code{\link{summary.GPArotation}} \tab Summary of results (S3 level function) \cr}
+\code{\link{GPForth.lp}} \tab Single start \eqn{L^p}{Lp} orthogonal rotation function \cr
+\code{\link{GPFoblq.lp}} \tab Single start \eqn{L^p}{Lp} oblique rotation function \cr
+}
 
-Rotations\cr
+Rotations using the gradient projection algorithm\cr
 \tabular{ll}{
 \code{\link{oblimin}} \tab Oblimin rotation  \cr
 \code{\link{quartimin}} \tab Quartimin rotation \cr
@@ -77,8 +80,16 @@ Rotations\cr
 \code{\link{varimin}} \tab Varimin rotation \cr
 \code{\link{bifactorT}} \tab Orthogonal Bifactor rotation \cr
 \code{\link{bifactorQ}} \tab Oblique Bifactor rotation \cr
+\code{\link{lpT}} \tab orthogonal \eqn{L^p}{Lp} rotation \cr
+\code{\link{lpQ}} \tab oblique \eqn{L^p}{Lp} rotation \cr
+}
+
+Other rotations\cr
+\tabular{ll}{
 \code{\link{eiv}} \tab Errors-in-Variables rotation \cr
 \code{\link{echelon}} \tab Echelon rotation \cr
+\code{\link[stats]{varimax}} \tab varimax [The R Stats Package] \cr
+\code{\link[stats]{promax}} \tab promax [The R Stats Package] \cr
 }
 
 
@@ -103,13 +114,14 @@ vgQ routines to compute value and gradient of the criterion (not exported from N
 \code{\link{vgQ.mccammon}}\tab McCammon Minimum Entropy Ratio vgQ \cr
 \code{\link{vgQ.varimin}}\tab Varimin vgQ \cr
 \code{\link{vgQ.bifactor}}\tab Bifactor vgQ \cr
+\code{\link{vgQ.lp.wls}}\tab Weighted Least Squares vgQ for \eqn{L^p}{Lp} rotation\cr
 }
 
 Data sets included in the GPArotation package \cr
 \tabular{ll}{
-\code{\link{Harman}}\tab Initial factor loading matrix for Harman's 8 physical variables \cr
+\code{\link{Harman}}\tab Initial factor loading matrix Harman8 for Harman's 8 physical variables \cr
 \code{\link{Thurstone}} \tab box20 and box26 initial factor loadings matrices \cr
-\code{\link{WansbeekMeijer}} \tab Netherlands TV viewership \cr
+\code{\link{WansbeekMeijer}} \tab NetherlandsTV dataset \cr
 }
 
 

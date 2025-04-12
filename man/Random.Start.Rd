@@ -10,7 +10,8 @@
     }
 
 \description{
-   Random orthogonal rotation to use as Tmat matrix to start GPFRSorth, GPFRSoblq, GPForth, or GPFoblq.
+   Random orthogonal rotation to use as Tmat matrix to start \code{GPFRSorth}, 
+   \code{GPFRSoblq}, \code{GPForth}, or \code{GPFoblq}.
    }
 \value{An orthogonal matrix.}
 

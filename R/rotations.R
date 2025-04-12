@@ -588,6 +588,24 @@ vgQ.varimin <- function (L){
 ###########################################
 ###########################################
 ###
+###             Lp rotation
+###
+###########################################
+###########################################
+
+# for lpT and lpQ functions see the file lp.R
+
+vgQ.lp.wls<-function(L, W) {
+   list(
+     Gq = 2 * W * L/nrow(L),                 
+     f = sum(W * L * L)/nrow(L),             
+     Method = "Weighted least squares for Lp rotation" # Method description
+   )
+ }
+
+###########################################
+###########################################
+###
 ###               PROMAX 
 ###            (not in use)
 ###

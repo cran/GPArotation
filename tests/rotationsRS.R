@@ -17,6 +17,7 @@ require("GPArotation")
 fuzz <- 1e-6 
 all.ok <- TRUE  
 
+
 sortFac <- function(x){  # Based on Fungible faSort 
   vx <- order(colSums(x$loadings^2), decreasing = TRUE)
   Dsgn <- diag(sign(colSums(x$loadings^3))) [ , vx]

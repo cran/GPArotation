@@ -1,4 +1,4 @@
-\encoding{latin1}
+\encoding{UTF-8}
 \name{eiv}
 \alias{eiv}
 
@@ -12,7 +12,7 @@
     \item{...}{additional arguments discarded.}
 }
 
-\value{A list (which includes elements used by \code{factanal}) with:
+\value{A GPArotation object which is a list with elements
    \item{loadings}{The new loadings matrix.} 
    \item{Th}{The rotation.} 
    \item{method}{A string indicating the rotation objective function ("eiv").}
@@ -90,7 +90,7 @@
    \code{\link{GPFoblq}}
 }
 \references{
-  \enc{Gösta}{Gosta} \enc{Hägglund}{Hagglund}. (1982). "Factor Analysis by
+    \enc{GÃ¶sta}{Gosta} \enc{HÃ¤gglund}{Haggland}. (1982). "Factor Analysis by
     Instrumental Variables Methods." \emph{Psychometrika}, 47, 209--222.
 
    Sock-Cheng Lewin-Koh and Yasuo Amemiya. (2003). "Heteroscedastic factor

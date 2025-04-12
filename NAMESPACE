@@ -39,6 +39,11 @@ export("equamax")
 export("parsimax")
 export("varimin")
 
+export("lpT")
+export("lpQ")
+export("GPForth.lp")
+export("GPFoblq.lp")
+
 export(
     "eiv",
     "echelon")

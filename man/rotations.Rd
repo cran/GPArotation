@@ -29,6 +29,8 @@
 \alias{varimin}
 \alias{bifactorT}
 \alias{bifactorQ}
+\alias{lpT}
+\alias{lpQ}
 
 \title{Rotations}
 \usage{
@@ -76,7 +78,13 @@
     varimin(A, Tmat=diag(ncol(A)), normalize=FALSE, eps=1e-5, maxit=1000, randomStarts=0)
     bifactorT(A, Tmat=diag(ncol(A)), normalize=FALSE, eps=1e-5, maxit=1000,randomStarts=0)
     bifactorQ(A, Tmat=diag(ncol(A)), normalize=FALSE, eps=1e-5, maxit=1000,randomStarts=0)
+    lpT(A, Tmat=diag(ncol(A)), p=1, normalize=FALSE, eps=1e-05, maxit=1000, 
+            randomStarts=0, gpaiter=5) 
+    lpQ(A, Tmat=diag(ncol(A)), p=1, normalize=FALSE, eps=1e-05, maxit=1000, 
+    		randomStarts=0, gpaiter=5)
+
     }
+    
 \arguments{
     \item{A}{an initial loadings matrix to be rotated.}
     \item{Tmat}{initial rotation matrix.}
@@ -84,25 +92,28 @@
     \item{Target}{rotation target for objective calculation.}
     \item{W}{weighting of each element in target.}
     \item{k}{number of close to zero loadings.}
-    \item{delta}{constant added to Lambda^2 in objective calculation.}
+    \item{delta}{constant added to \eqn{\Lambda^2}{Lambda^2} in the objective calculation.}
     \item{kappa}{see details.}
     \item{normalize}{parameter passed to optimization routine (GPForth or GPFoblq).}
     \item{eps}{parameter passed to optimization routine (GPForth or GPFoblq).}
     \item{maxit}{parameter passed to optimization routine (GPForth or GPFoblq).}
     \item{randomStarts}{parameter passed to optimization routine (GPFRSorth or GPFRSoblq).}
     \item{L}{provided for backward compatibility in target rotations only. Use A going forward.}
+    \item{p}{Component-wise \eqn{L^p}{Lp}, where 0 < p \eqn{=<}{=<} 1. }
+	  \item{gpaiter}{Maximum iterations for GPA rotation loop in \eqn{L^p}{Lp} rotation.}
 }
 
-\value{A list (which includes elements used by \code{factanal}) with:
+\value{A \code{GPArotation} object which is a list with elements 
+   (includes elements used by \code{factanal}) with:
    \item{loadings}{Lh from \code{GPFRSorth} or \code{GPFRSoblq}.} 
    \item{Th}{Th from \code{GPFRSorth} or \code{GPFRSoblq}.}  
    \item{Table}{Table from \code{GPForth} or \code{GPFoblq}.}
    \item{method}{A string indicating the rotation objective function.}
    \item{orthogonal}{A logical indicating if the rotation is orthogonal.}
    \item{convergence}{Convergence indicator from \code{GPFRSorth} or \code{GPFRSoblq}.}
-   \item{Phi}{t(Th) \%*\% Th.  The covariance matrix of the rotated factors.
+   \item{Phi}{\code{t(Th) \%*\% Th}.  The covariance matrix of the rotated factors.
    This will be the identity matrix for orthogonal
-   rotations so is omitted (NULL) for the result from GPFRSorth and GPForth.}
+   rotations so is omitted (NULL) for the result from \code{GPFRSorth} and \code{GPForth}.}
    \item{randStartChar}{Vector indicating results from random starts 
    from \code{GPFRSorth} or \code{GPFRSoblq}}
    }
@@ -147,6 +158,8 @@
  \code{varimin}   \tab orthogonal \tab 				   \cr
  \code{bifactorT} \tab orthogonal \tab  Jennrich and Bentler bifactor rotation\cr
  \code{bifactorQ} \tab oblique    \tab  Jennrich and Bentler biquartimin rotation\cr
+ \code{lpT}		  \tab orthogonal \tab  \eqn{L^p}{Lp} rotation \cr
+ \code{lpQ}		  \tab oblique    \tab  \eqn{L^p}{Lp} rotation \cr
  }
 
  Note that \code{Varimax} defined here uses \code{vgQ.varimax} and 
@@ -156,9 +169,16 @@
  
  The argument \code{kappa} parameterizes the family for the Crawford-Ferguson 
  method. If \code{m} is the number of factors and \code{p} is the number of 
- indicators then \code{kappa} values having special names are 0=Quartimax, 
- 1/p=Varimax, m/(2*p)=Equamax, (m-1)/(p+m-2)=Parsimax, 1=Factor parsimony.
-
+ indicators then \code{kappa} values having special names are \eqn{0=}{0=}Quartimax, 
+ \eqn{1/p=}{1/p=}Varimax, \eqn{m/(2*p)=}{m/(2*p)=}Equamax, 
+ \eqn{(m-1)/(p+m-2)=}{(m-1)/(p+m-2)=}Parsimax, \eqn{1=}{1=}Factor parsimony.
+ 
+ Bifactor rotations, bifactorT and bifactorQ are called bifactor and
+ biquartimin in Jennrich, R.I. and Bentler, P.M. (2011). 
+      
+ The argument \code{p} is needed for \eqn{L^p}{Lp} rotation. See 
+ \link{Lp rotation} for details on the rotation method.
+ 
  }
 \examples{
   # see GPFRSorth and GPFRSoblq for more examples
@@ -224,23 +244,21 @@
 
   }
 \seealso{
+   \code{\link[stats]{factanal}}, 
    \code{\link{GPFRSorth}}, 
    \code{\link{GPFRSoblq}}, 
    \code{\link{vgQ}},
-   \code{\link{eiv}}, 
-   \code{\link{echelon}}, 
+   \code{\link{Harman}}, 
+   \code{\link{box26}}, 
    \code{\link{WansbeekMeijer}}, 
-   \code{\link[stats]{factanal}}, 
-   \code{\link[stats]{varimax}}
 }
 \references{
   Bernaards, C.A. and Jennrich, R.I. (2005) Gradient Projection Algorithms 
      and Software for Arbitrary Rotation Criteria in Factor Analysis. 
      \emph{Educational and Psychological Measurement}, \bold{65}, 676--696.
 
-   Bifactor rotation, bifactorT and bifactorQ are called bifactor and
-      biquartimin in Jennrich, R.I. and Bentler, P.M. 
-      (2011) Exploratory bi-factor analysis. \emph{Psychometrika}, \bold{76}. 
+  Jennrich, R.I. and Bentler, P.M. (2011) Exploratory bi-factor analysis. 
+     \emph{Psychometrika}, \bold{76}. 
 
   }
 

@@ -26,28 +26,28 @@
     \item{maxit}{maximum number of iterations allowed in the main loop.}
     \item{method}{rotation objective criterian.}
     \item{methodArgs}{a list ofmethodArgs arguments passed to the rotation objective}
-    \item{randomStarts}{number of random starts (GPFRSorth and GPFRSoblq)}
+    \item{randomStarts}{number of random starts (\code{GPFRSorth} and \code{GPFRSoblq})}
 }
 
 \description{
    Gradient projection rotation optimization routine used by various rotation
    objective.
    }
-\value{A GPArotation object which is a list with elements 
+\value{A \code{GPArotation} object which is a list with elements 
   \item{loadings}{The rotated loadings, one column for each factor. If randomStarts
   		were requested then this is the rotated loadings matrix with the 
   		lowest criterion value.}
-  \item{Th}{The rotation matrix, loadings \%*\% t(Th) = A.}
+  \item{Th}{The rotation matrix, loadings \code{\%*\% t(Th) = A}.}
   \item{Table}{A matrix recording the iterations of the rotation optimization.}
   \item{method}{A string indicating the rotation objective function.}
   \item{orthogonal}{A logical indicating if the rotation is orthogonal.}
   \item{convergence}{A logical indicating if convergence was obtained.}
-  \item{Phi}{t(Th) \%*\% Th.  The covariance matrix of the rotated factors.
+  \item{Phi}{\code{t(Th) \%*\% Th}.  The covariance matrix of the rotated factors.
   This will be the identity matrix for orthogonal
-  rotations so is omitted (NULL) for the result from GPFRSorth and GPForth.}
+  rotations so is omitted (\code{NULL}) for the result from \code{GPFRSorth} and \code{GPForth}.}
   \item{Gq}{The gradient of the objective function at the rotated loadings.}
   \item{randStartChar}{A vector with characteristics of random starts 
-  	(GPFRSorth and GPFRSoblq only; omitted if randomStarts =< 1).}
+  	(GPFRSorth and GPFRSoblq only; omitted if \code{randomStarts =< 1}).}
   }
 \details{
  Gradient projection (GP) rotation optimization routines developed by
@@ -87,18 +87,21 @@
  initial rotation matrix may be set by \code{Tmat = \link{Random.Start}(ncol(A))}.
   
  The argument \code{method} can be used to specify a string indicating
- the rotation objective. Oblique rotation defaults to \code{"quartimin"} 
- and orthogonal rotation defaults to \code{"varimax"}. Available rotation objectives
- are \code{"oblimin"}, \code{"quartimin"}, \code{"target"}, \code{"pst"},
- \code{"oblimax"}, \code{"entropy"}, \code{"quartimax"}, \code{"varimax"}, 
- \code{"simplimax"}, \code{"bentler"}, \code{"tandemI"}, \code{"tandemII"}, 
- \code{ "geomin"}, \code{"cf"}, \code{"infomax"}, \code{"mccammon"}, \code{bifactor},
- and \code{"varimin"}. The string is prefixed with "vgQ." to give the actual function call. 
+ the rotation objective. Oblique rotation defaults to "\code{quartimin}" 
+ and orthogonal rotation defaults to "\code{varimax}". Available rotation objectives
+ are "\code{oblimin}", "\code{quartimin}", "\code{target}", "\code{pst}",
+ "\code{oblimax}", "\code{entropy}", "\code{quartimax}", "\code{Varimax}", 
+ "\code{simplimax}", "\code{bentler}", "\code{tandemI}", "\code{tandemII}", 
+ "\code{geomin}", "\code{cf}", "\code{infomax}", "\code{mccammon}", "\code{bifactor}", "\code{lp}"
+ and "\code{varimin}". The string is prefixed with "\code{vgQ.}" to give the actual function call. 
  See \code{\link{vgQ}} for details.
  
- Some rotation criteria (\code{"oblimin"}, \code{"target"}, \code{"pst"}, \code{"simplimax"},
- \code{"geomin"}, \code{"cf"}) require one or more additional arguments. See \code{link{rotations}}
- for details and default values, if applicable. 
+ Some rotation criteria ("\code{oblimin}", "\code{target}", "\code{pst}", "\code{simplimax}",
+ "\code{geomin}", "\code{cf}", \code{"lp"}) require one or more additional arguments. See
+ \code{\link{rotations}} for details and default values, if applicable. 
+ 
+ Note that "\code{lp}" rotation uses a modeified version of the GPA rotation algorithm;
+ for details on the use of \eqn{L^p}{Lp} rotation, please see \link{Lp rotation}.
 
  For examples of the indirect use see \code{\link{rotations}}. 
  
@@ -149,7 +152,8 @@
    \code{\link{varimin}},
    \code{\link{bifactorT}},
    \code{\link{bifactorQ}},
-   \code{\link[stats]{promax}}
+   \code{\link{lpT}},
+   \code{\link{lpQ}},
 }
 \examples{
   # see rotations for more examples	

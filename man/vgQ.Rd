@@ -19,6 +19,7 @@
 \alias{vgQ.mccammon}
 \alias{vgQ.bifactor}
 \alias{vgQ.varimin}
+\alias{vgQ.lp.wls}
 
 \title{Rotations}
 \usage{
@@ -41,14 +42,15 @@
     vgQ.mccammon(L)
     vgQ.varimin(L)
     vgQ.bifactor(L)
+    vgQ.lp.wls(L,W)
 }
 \arguments{
     \item{L}{a factor loading matrix}
     \item{gam}{0=Quartimin, .5=Biquartimin, 1=Covarimin.}
     \item{Target}{rotation target for objective calculation.}
-    \item{W}{weighting of each element in target.}
+    \item{W}{weighting of each element in target and in irls.}
     \item{k}{number of close to zero loadings.}
-    \item{delta}{constant added to Lambda^2 in objective calculation.}
+    \item{delta}{constant added to \eqn{\Lambda^2}{Lambda^2} in objective calculation.}
     \item{kappa}{see details.}
 }
 
@@ -64,12 +66,11 @@
  The \code{vgQ.*} versions of the code are called by the optimization routine and
  would typically not be used directly, so these methods are not exported
  from the package NAMESPACE. (They simply return the function value and gradient
- for a given rotation matrix.) You can print these functions, but the package 
- name needs to be specified since they are not exported. For example, use
+ for a given rotation matrix.) These functions can be printed through,for example,
  \code{GPArotation:::vgQ.oblimin} to view the function \code{vgQ.oblimin}.
- The T or Q ending on function names should be omitted for the \code{vgQ.*} 
+ The \code{T} or \code{Q} ending on function names should be omitted for the \code{vgQ.*} 
  versions of the code so, for example, use \code{GPArotation:::vgQ.target} to view the target
- criterion calculation.
+ criterion calculation which is used in both orthogonal and oblique rotation.
  \tabular{lll}{
 \code{vgQ.oblimin}   \tab orthogonal or oblique \tab  oblimin family\cr
 \code{vgQ.quartimin} \tab oblique	   \tab         				\cr
@@ -91,11 +92,12 @@
 \code{vgQ.mccammon}   \tab orthogonal    \tab McCammon minimum entropy ratio  \cr
 \code{vgQ.varimin} \tab orthogonal \tab varimin criterion \cr
 \code{vgQ.bifactor} \tab orthogonal or oblique \tab bifactor/biquartimin rotation\cr
+\code{vgQ.lp.wls} \tab orthoginal or oblique \tab iterative reweighted least squares for \eqn{L^p}{Lp} rotation\cr
  }
  See \link{rotations} for use of arguments.
  
- New rotation methods can be programmed with a name "vgQ.newmethod". The 
- inputs are the matrix L, and optionally any additional arguments. The
+ New rotation methods can be programmed with a name "\code{vgQ.newmethod}". The 
+ inputs are the matrix \code{L}, and optionally any additional arguments. The
  output should be a list with elements \code{f}, \code{Gq}, and \code{Method}.
  
  Gradient projection \emph{without} derivatives can be performed using the

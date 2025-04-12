@@ -4,6 +4,14 @@ Known problems
 	algorithm gets stuck and does not improve (so does not converge). The
 	workaround is to restart with a very slightly perturbed starting point.       
 
+Changes in GPArotation version 2025.3-1
+
+   o    Added Lp rotation (via Xinyi Liu), including examples, help file, tests
+
+   o    Added some automated tests for error messages    
+   
+   o    Edits to the manual pages 
+
 Changes in GPArotation version 2024.3-1
 
    o    Added tests for use in automated validation systems 

@@ -12,7 +12,7 @@
     \item{...}{additional arguments discarded.}
 }
 
-\value{A list (which includes elements used by \code{factanal}) with:
+\value{A GPArotation object which is a list with elements
    \item{loadings}{The new loadings matrix.} 
    \item{Th}{The rotation.} 
    \item{method}{A string indicating the rotation objective function ("echelon").}
